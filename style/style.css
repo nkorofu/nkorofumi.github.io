@@ -138,13 +138,6 @@ body {
   /* height: auto; */
 }
 
-.six .hat {
-  position: absolute;
-  width: 80px;
-  top: -35%;
-  left: 41.5%;
-  /* transform: scale(0.1); */
-}
 
 .baloons img {
   display: inline-block;
