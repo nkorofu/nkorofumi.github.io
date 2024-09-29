@@ -1,17 +1,4 @@
 // Animation Timeline
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".hbd-chatbox span, .wish-hbd span, .idea-1, .idea-2, .idea-3, .idea-4, .idea-5, .idea-6 span").forEach(el => {
-        el.style.visibility = "hidden";
-        el.style.opacity = "0"; // 初期状態で透明に
-    });
-});
-
-// ボタンのクリックイベント
-const playButton = document.getElementById('play-button');
-playButton.addEventListener('click', () => {
-    // アニメーション開始
-    animationTimeline();
-});
 const animationTimeline = () => {
   // Spit chars that needs to be animated individually
   const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
@@ -314,6 +301,9 @@ const resolveFetch = () => {
     resolve("Fetch done!");
   });
 };
+
+resolveFetch().then(animationTimeline());
+
 
 resolveFetch().then(animationTimeline());
 
