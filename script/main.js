@@ -42,7 +42,7 @@ const animationTimeline = () => {
       .to(".last-smile", 0.5, { rotation: 90 }, "+=1");
 
     // 音楽オブジェクトを取得
-    const birthdayMusic = document.getElementById("birthdayMusic");
+    const birthdayMusic = document.getElementById("background-music");
 
     // ページが読み込まれた時に音楽を再生
     birthdayMusic.volume = 1.0; // 音量を最大に
@@ -55,6 +55,31 @@ const animationTimeline = () => {
     clickMessage.addEventListener("click", () => {
         birthdayMusic.currentTime = 0; // 音楽を最初に戻す
         tl.restart();
+    });
+};
+
+// ボタンの機能を追加
+window.onload = function() {
+    const audio = document.getElementById('background-music');
+
+    // ボタンのクリックイベント
+    const playButton = document.getElementById('play-button');
+    playButton.addEventListener('click', () => {
+        // 他の要素を非表示にする
+        document.querySelectorAll('.container > div').forEach(div => {
+            div.style.display = 'none';
+        });
+
+        // 音楽を再生する
+        audio.play().catch((error) => {
+            console.error('ボタンによる再生に失敗しました:', error);
+        });
+
+        // シンプルなページにするための処理を追加
+        document.body.innerHTML = '<button id="restart-button">再スタート</button>';
+        document.getElementById('restart-button').addEventListener('click', () => {
+            location.reload(); // ページを再読み込み
+        });
     });
 };
 
