@@ -14,6 +14,7 @@ const animationTimeline = () => {
     };
 
     const tl = new TimelineMax();
+
     tl.to(".container", 0.1, { visibility: "visible" })
       .from(".one", 0.7, { opacity: 0, y: 10 })
       .from(".two", 0.4, { opacity: 0, y: 10 })
@@ -44,7 +45,7 @@ const animationTimeline = () => {
     // 音楽オブジェクトを取得
     const birthdayMusic = document.getElementById("background-music");
 
-    // ページが読み込まれた時に音楽を再生
+    // 音楽を再生する
     birthdayMusic.volume = 1.0; // 音量を最大に
     birthdayMusic.play().catch((error) => {
         console.error('音楽再生に失敗しました:', error);
@@ -70,16 +71,14 @@ window.onload = function() {
             div.style.display = 'none';
         });
 
-        // 音楽を再生する
-        audio.play().catch((error) => {
-            console.error('ボタンによる再生に失敗しました:', error);
-        });
-
         // シンプルなページにするための処理を追加
         document.body.innerHTML = '<button id="restart-button">再スタート</button>';
         document.getElementById('restart-button').addEventListener('click', () => {
             location.reload(); // ページを再読み込み
         });
+
+        // アニメーションを開始する
+        animationTimeline(); // ボタンが押されたらアニメーションを開始
     });
 };
 
